@@ -16,7 +16,7 @@ void hash(){
 	Scanner sc = new Scanner(System.in);
 	Scanner sc1=new Scanner(System.in);
 try {
-	System.out.println("Enter the value for how many studentdetails do you add");
+	System.out.println("Enter the numbers for how many studentdetails do you add");
 	Scanner sc2=new Scanner(System.in);
 	int a=sc2.nextInt();
 	for(int j=0;j<a;j++) {
