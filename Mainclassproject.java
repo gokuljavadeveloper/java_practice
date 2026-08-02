@@ -6,7 +6,7 @@ public class Student {
 public static void main(String[] args) {
 				oop p1=new oop();
 				try {
-				p1.loadFromFile();
+				
 				p1.hash();
 				System.out.println("If you want Delete any StudentDetail:enter delete OR you dont want to delete :enter dont");
 				Scanner sc = new Scanner(System.in);
@@ -24,7 +24,7 @@ public static void main(String[] args) {
 				else {
 					System.out.println("you choose dont delete option");
 				}
-				p1.saveToFile();
+			
 				}catch (InputMismatchException e) {
 					System.out.println("Invalid input: please enter the expected data type (e.g. a number where a number is required).");
 				} catch (NoSuchElementException e) {
