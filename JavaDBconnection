@@ -10,7 +10,7 @@ public class JDBC_Demo {
 		// TODO Auto-generated method stub
 		String url="jdbc:mysql://localhost:3306/jdbcdemo1";
 		String username="root";
-		String password="password12345";
+		String password="--------";
 		String query="select * from jdbcstd"; // driver manager is a class in java manages a dbdrivers and establishes connections; it play likes check the database driver 
 		String query2="select*from products";
 		Connection con = DriverManager.getConnection(url,username,password); //connection is an interface  it works like call dial pandra mari
@@ -28,7 +28,7 @@ public class JDBC_Demo {
 		public static void insertingrecords() throws Exception{
 			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
 			String username="root";
-			String password="password12345";
+			String password="-------";
 			String query ="insert into products values('ponds',2,90.0)"; 
 			Connection con = DriverManager.getConnection(url,username,password);
 			Statement st = con.createStatement();
@@ -40,7 +40,7 @@ public class JDBC_Demo {
 		public static void insertvarusingpst() throws Exception{
 			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
 			String username="root";
-			String password="password12345";
+			String password="----------";
 			String name="ponts";
 			int id = 2;
 			float rate=(float) 80.35;
@@ -59,7 +59,7 @@ public class JDBC_Demo {
 		public static void deletingrecords() throws Exception{
 			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
 			String username="root";
-			String password="password12345";
+			String password="-------";
 			int id=1;
 			String query2="delete from products where prodid ="+id+";";
 			Connection con = DriverManager.getConnection(url,username,password); 
@@ -73,7 +73,7 @@ public class JDBC_Demo {
 		public static void updatingrecords() throws Exception{
 			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
 			String username="root";
-			String password="password12345";
+			String password="---------------";
 			int id=2;
 			String query2="update products set prodname='lux'where prodid="+id+";";
 			Connection con = DriverManager.getConnection(url,username,password); 
