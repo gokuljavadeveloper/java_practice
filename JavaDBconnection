@@ -1,0 +1,89 @@
+package gokusdb;
+import java.sql.*;
+import java.util.Scanner;
+public class JDBC_Demo {
+
+	public static void main(String[] args) throws Exception {
+		updatingrecords();
+	}	
+		public static void readrecords() throws Exception{
+		// TODO Auto-generated method stub
+		String url="jdbc:mysql://localhost:3306/jdbcdemo1";
+		String username="root";
+		String password="password12345";
+		String query="select * from jdbcstd"; // driver manager is a class in java manages a dbdrivers and establishes connections; it play likes check the database driver 
+		String query2="select*from products";
+		Connection con = DriverManager.getConnection(url,username,password); //connection is an interface  it works like call dial pandra mari
+		Statement st = con.createStatement();//we create statement becoz we sent a query to db so we create an object ex:msg type panra mari
+		ResultSet rs =st.executeQuery(query);
+		ResultSet rs2=st.executeQuery(query2);
+		while(rs.next()){// it means next method returns a boolean values,so when it will be give false value that while stop that returning
+		System.out.println("stdname= "+rs.getString(1));
+		System.out.println("prodid= "+rs.getInt(2));
+		System.out.println("productrate= "+rs.getInt(3));
+		}
+		con.close();
+		
+}
+		public static void insertingrecords() throws Exception{
+			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
+			String username="root";
+			String password="password12345";
+			String query ="insert into products values('ponds',2,90.0)"; 
+			Connection con = DriverManager.getConnection(url,username,password);
+			Statement st = con.createStatement();
+			int rows =st.executeUpdate(query); 
+		
+			System.out.println("how many records affected ="+rows);
+			con.close();
+			}
+		public static void insertvarusingpst() throws Exception{
+			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
+			String username="root";
+			String password="password12345";
+			String name="ponts";
+			int id = 2;
+			float rate=(float) 80.35;
+			String query ="insert into products values(?,?,?);";
+			//String query2="delete from products;";
+			Connection con = DriverManager.getConnection(url,username,password);
+			PreparedStatement pst = con.prepareStatement(query);
+     		pst.setString(1, name);
+			pst.setInt(2, id);
+			pst.setFloat(3, rate);
+			int rows =pst.executeUpdate(); 
+		
+			System.out.println("how many rows affected ="+rows);
+			con.close();
+			}
+		public static void deletingrecords() throws Exception{
+			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
+			String username="root";
+			String password="password12345";
+			int id=1;
+			String query2="delete from products where prodid ="+id+";";
+			Connection con = DriverManager.getConnection(url,username,password); 
+			PreparedStatement pst = con.prepareStatement(query2);
+     		
+			int rows =pst.executeUpdate(); 
+		
+			System.out.println("how many rows affected ="+rows);
+			con.close();
+			}
+		public static void updatingrecords() throws Exception{
+			String url="jdbc:mysql://localhost:3306/jdbcdemo1";
+			String username="root";
+			String password="password12345";
+			int id=2;
+			String query2="update products set prodname='lux'where prodid="+id+";";
+			Connection con = DriverManager.getConnection(url,username,password); 
+			PreparedStatement pst = con.prepareStatement(query2);
+     		
+			int rows =pst.executeUpdate(); 
+		
+			System.out.println("how many rows affected ="+rows);
+			con.close();
+			}
+		
+}
+ 
