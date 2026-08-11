@@ -25,7 +25,7 @@ public class MainClass {
 			}
 			}
 		catch(Exception e) {
-			System.out.println("Occured Some Errors,Sorry Try Again");
+			System.out.println("Occured Some Errors,Sorry Try Again Later");
 		}
 	}
 
