@@ -1,0 +1,72 @@
+package gokusdb;
+import java.sql.*;
+import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+public class Bus_Booking {
+	
+	final  Connection con=JDBCCONNECTION_BusReservation.getConnections();
+	Bus_Booking() throws Exception{
+	System.out.println("Please enter the details of which bus you to travel,enter: luxury or public(normal) ");	
+	System.out.println("Enter the Busname");
+	Scanner sc = new Scanner(System.in);
+	String Busname=sc.next();
+	System.out.println("Enter the Busid");
+	Scanner sc2=new Scanner(System.in);
+	int BusId=sc2.nextInt();
+	boolean Ac;
+    if(BusId==1) {
+	 Ac=true;
+	}
+	else {
+		Ac=false;
+		
+	}
+	Scanner scanner = new Scanner(System.in);
+	System.out.print("Enter a date (YYYY-MM-DD): ");
+	String inputDate = scanner.next();
+	 java.sql.Date sqlDate=null;
+	 boolean flag;
+	 try {
+	 flag=true;
+	   LocalDate date = LocalDate.parse(inputDate);
+	   sqlDate=java.sql.Date.valueOf(date);
+	 } catch (DateTimeParseException e) {
+		 flag=false;
+	System.out.println("Invalid format. Please use YYYY-MM-DD.");
+	   }
+	
+	 String query="insert into BusBooking values(?,?,?,?,?)";
+	 PreparedStatement pst = con.prepareStatement(query);
+	 
+	 pst.setString(1,Busname);
+	 pst.setInt(2,BusId);
+	 Busname.toLowerCase();
+	 Busname.split("");
+	 if(Busname.contains("luxurybus")) 
+	 {
+	 int Buscapacity=40;
+	 pst.setInt(3, Buscapacity);
+	  }else {
+	 int Buscapacity2=50;	  
+	 pst.setInt(3, Buscapacity2);
+	  }
+	 
+	 pst.setBoolean(4, Ac);
+	 pst.setDate(5,sqlDate);
+     pst.executeUpdate();
+if(flag) {
+	
+System.out.println("bookingconformed");
+}
+else {
+	System.out.println("booking not conformed,you did some mistakes when entering the data");
+}
+
+    pst.close();
+    con.close();
+}
+}
+	
+
