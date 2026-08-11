@@ -1,0 +1,32 @@
+package gokusdb;
+import java.util.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class MainClass {
+	public static void main(String[] args) {
+		try {
+			final  Connection con=JDBCCONNECTION_BusReservation.getConnections();
+			String query1="select count(PassangerPhoneNumber) from  passangers";
+			Statement st = con.createStatement();
+			ResultSet rs =st.executeQuery(query1);
+			if(rs.next()) {
+				int count=rs.getInt(1);
+				System.out.println(count);
+			if(count<4) {
+				BusDetails busdetail = new BusDetails();
+			    Passanger_Details psgdetails=new Passanger_Details();
+			    Bus_Booking busbook=new Bus_Booking(); 
+			}
+			else {
+				System.out.println("sorry tickets are sold out");
+			}
+			}
+			}
+		catch(Exception e) {
+			System.out.println("Occured Some Errors,Sorry Try Again");
+		}
+	}
+
+}
