@@ -1,0 +1,25 @@
+package gokusdb;
+import java.sql.*;
+import java.sql.Connection;
+import java.sql.Statement;
+
+public class BusDetails {
+	BusDetails() throws Exception{
+		String Query="select*from BusDatas";
+		Connection con=JDBCCONNECTION_BusReservation.getConnections();
+		Statement st=con.createStatement();
+		ResultSet rs= st.executeQuery(Query);
+		while(rs.next()) {
+System.out.println("BusName = "+rs.getString(1));
+System.out.println("BusId = "+rs.getInt(2));
+System.out.println("Capacity = "+rs.getInt(3));
+if(rs.getBoolean(4)) {
+System.out.println("Ac = provided ");
+     }
+else {
+	System.out.println("Ac = Not provide");
+}
+System.out.println("********************************");
+}
+}
+}
