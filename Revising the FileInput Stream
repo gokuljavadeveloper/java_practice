@@ -1,0 +1,32 @@
+package practical_java;
+import java.io.IOException;
+import java.util.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class copyImage {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+try {
+	InputStream ip = new FileInputStream("C:\\Users\\ANGU COMPUTER'S\\Desktop\\GOKUL MOBILE\\Pictures\\stock-photo-black-scratched-grunge-background-scary-horror-texture-old-film-effect-1121136263.jpg");
+	OutputStream op=new FileOutputStream("C:\\Users\\ANGU COMPUTER'S\\Desktop\\GOKUL MOBILE\\Pictures\\saran.jpg");
+int ipreceiver=ip.read();
+while(ipreceiver!=-1) {
+	op.write(ipreceiver);
+ipreceiver=ip.read();
+}
+op.flush();
+} catch (FileNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+	}
+
+}
